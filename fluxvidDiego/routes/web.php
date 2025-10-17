@@ -12,7 +12,7 @@ Route::get('movies', function () {
 
     $peliculasTerror = [
     [
-        "titulo" => "El resplandor",
+        "titulo" => "El resplanssdor",
         "director" => "Stanley Kubrick",
         "anyo" => 1980
     ],
