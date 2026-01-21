@@ -1,0 +1,74 @@
+:root {
+  --colour1: #77b0d6;
+  --colour2: #272c64;
+  --colour3: #8f939b;
+  --colour4: #97e997;
+  --colour5: #d2e7f0;
+  --tamano-texto: 16px;
+  --margen-base: 8px;
+}
+
+body{
+
+    margin: 0;
+}
+header{
+    background-color:var(--colour2);
+    height: 100px;
+}
+
+main{
+    background-color: var(--colour1);
+    height: 100%;
+    min-height: 100vh;
+}
+
+footer{
+    background-color: var(--colour2);
+    height: 200px;
+}
+
+h1{
+    margin-top: 0;
+}
+
+nav{
+    display: flex;
+    gap:35px;
+    background-color: var(--colour3);
+    padding: 10px;
+    margin:0;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.players{
+
+    display: flex;
+    flex-wrap: wrap;
+    gap:100px;
+    background-color: var(--colour4);
+}
+
+.playerCard{
+    display: flex;
+    flex-direction: column;
+    flex: 1 20%;
+
+    text-align: center;
+    align-items: center;
+
+    width: auto;
+    margin: 20px;
+
+    border:solid;
+    border-width:15px;
+    border-radius: 10%;
+    border-color: var(--colour3);
+
+    background-color: var(--colour5);
+
+}
