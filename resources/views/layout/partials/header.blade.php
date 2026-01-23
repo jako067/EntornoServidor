@@ -8,5 +8,8 @@
         <a href="{{route('shop')}}"> Tienda </a>
         <a href="{{route('players.create')}}">Añadir Jugador</a>
         <a href="{{route('events.create')}}">Añadir Evento</a>
-    </nav>
+        <a href="{{route('users.list')}}"> Lista Usuarios</a>
+        <a href="{{route('login')}}"> Loguearte</a>
+        <a href="{{route('signup')}}"> Signup</a>
+        </nav>
 </header>

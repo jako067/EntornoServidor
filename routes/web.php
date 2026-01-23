@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\EventController;
@@ -25,3 +28,15 @@ Route::get('legal/privacity',  [LegalController::class,'privacity'])->name('lega
 Route::get('legal/usage',  [LegalController::class,'usage'])->name('legal.usage');
 
 Route::get('contact', ContactController::class)->name('contact');
+
+
+Route::get('signup',[LoginController::class, 'signupForm'])->name('signupForm');
+Route::post('signup',[LoginController::class, 'signup'])->name('signup');
+Route::get('login',[LoginController::class, 'loginForm'])->name('loginForm');
+Route::post('login',[LoginController::class, 'login'])->name('login');
+Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+
+Route::get('account',[UserController::class, 'account'])->name('users.account')->middleware('auth');
+
+Route::get('users/list',[UserController::class,'list'])->name('users.list')->middleware('auth');
+

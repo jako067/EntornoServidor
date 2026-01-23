@@ -1,3 +1,12 @@
-<div>
-    <!-- Simplicity is an acquired taste. - Katharine Gerould -->
-</div>
+<form action ="{{route('login')}}" method="post">
+@csrf
+
+<label for="username">Nombre de usuario</label><br>
+<input type="text" name="username" id="username" value="{{old('username')}}"><br>
+
+<label for="password">Contraseña<label><br>
+<input type="text" name="password" id="password" value="{{old('password')}}"><br>
+
+<input type="submit" value="Enviar">
+
+</form>

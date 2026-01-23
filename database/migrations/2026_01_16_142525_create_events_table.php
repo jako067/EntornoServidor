@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('map')->nullable();
             $table->date('date')->nullable();
             $table->time('hour');
-            $table->enum('type',['official','exhibition','charity'])->default('oficial');
+            $table->enum('type',['official','exhibition','charity'])->default('official');
             $table->string('tag');
             $table->boolean('visible')->default(false);
 
