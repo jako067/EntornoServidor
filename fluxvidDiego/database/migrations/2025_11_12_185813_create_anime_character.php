@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('anime_character', function (Blueprint $table) {
+            $table->foreignId('anime_id')
+                    ->constrained('animes')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
+            $table->foreignId('character_id')
+                    ->constrained('characters')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
+            $table->unique(['anime_id', 'character_id']);
+            $table->index('character_id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('anime_character');
+    }
+};

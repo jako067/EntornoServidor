@@ -1,0 +1,27 @@
+@extends('layout.layout')
+
+@section('title')
+    Mensajes
+@endsection
+
+@section('body')
+    <h1> Añada su mensaje: </h1>
+
+    <form action="{{ route('messages.store') }}" method="post">
+        @csrf
+
+        <label for="name">Nombre de su mensaje: </label>
+        <input type="text" name="name" id="name">
+
+        <label for="subject">Tema: </label>
+        <input type="text" name="subject" id="subject">
+
+        <label for="text">texto: </label>
+        <input type="text" name="text" id="text">
+
+        <label for="readed">Leido: </label>
+        <input type="text" name="readed" id="readed">
+
+        <input type="submit" value="enviar">
+    </form>
+@endsection

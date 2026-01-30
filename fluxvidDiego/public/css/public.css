@@ -1,0 +1,17 @@
+body{
+background-color: rgb(57, 57, 126);
+color: beige;
+}
+
+ul{
+    display: flex;
+    gap: 50px;
+    background-color: rgb(203, 243, 191);
+    padding: 30px;
+    list-style: none;
+}
+
+a{
+    color: rgb(29, 110, 185);
+    font-size:20px;
+}
