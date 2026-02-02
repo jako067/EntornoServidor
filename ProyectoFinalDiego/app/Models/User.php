@@ -49,8 +49,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function users():BelongsToMany{
+    public function events():BelongsToMany{
 
-    return $this->belongsToMany(User::class);
+    return $this->belongsToMany(Event::class);
     }
 }

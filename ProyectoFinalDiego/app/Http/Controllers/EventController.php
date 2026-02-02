@@ -6,8 +6,7 @@ use App\Models\Event;
 use DeepCopy\Filter\ReplaceFilter;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Container\Attributes\Auth;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -16,9 +15,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $users =User::get();
-        $events =Event::orderBy('date')->get();
-        return(view('events.index', compact('events')));
+        $users = User::get();
+        $events = Event::orderBy('date')->get();
+        return (view('events.index', compact('events')));
     }
 
     /**
@@ -26,8 +25,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $events=Event::get();
-        return(view('events.create',compact("events")));
+        $events = Event::get();
+        return (view('events.create', compact("events")));
     }
 
     /**
@@ -35,17 +34,17 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event=new Event;
+        $event = new Event;
 
-        $event['name']=$request->input('name');
-        $event['description']=$request->input('description');
-        $event['location']=$request->input('location');
-        $event['map']=$request->input('map');
-        $event['date']=$request->input('date');
-        $event['hour']=$request->input('hour');
-        $event['type']=$request->input('type');
-        $event['tag']=$request->input('tag');
-        $event['visible']=$request->input('visible')?1:0;
+        $event['name'] = $request->input('name');
+        $event['description'] = $request->input('description');
+        $event['location'] = $request->input('location');
+        $event['map'] = $request->input('map');
+        $event['date'] = $request->input('date');
+        $event['hour'] = $request->input('hour');
+        $event['type'] = $request->input('type');
+        $event['tag'] = $request->input('tag');
+        $event['visible'] = $request->input('visible') ? 1 : 0;
 
         $event->save();
 
@@ -57,7 +56,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.show',compact('event'));
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -66,7 +65,6 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         return view('events.edit', compact('event'));
-
     }
 
     /**
@@ -74,20 +72,19 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $event['name']=$request->input('name');
-        $event['description']=$request->input('description');
-        $event['location']=$request->input('location');
-        $event['map']=$request->input('map');
-        $event['date']=$request->input('date');
-        $event['hour']=$request->input('hour');
-        $event['type']=$request->input('type');
-        $event['tag']=$request->input('tag');
-        $event['visible']=$request->input('visible')?1:0;
+        $event['name'] = $request->input('name');
+        $event['description'] = $request->input('description');
+        $event['location'] = $request->input('location');
+        $event['map'] = $request->input('map');
+        $event['date'] = $request->input('date');
+        $event['hour'] = $request->input('hour');
+        $event['type'] = $request->input('type');
+        $event['tag'] = $request->input('tag');
+        $event['visible'] = $request->input('visible') ? 1 : 0;
 
         $event->save();
 
         return (redirect()->route('events.show', $event));
-
     }
 
     /**
@@ -99,14 +96,23 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
-    public function likeDislike(Request $request, Event $event, String $page){
-    /*$users= Auth::user();
-        $event->user()->toogle(User::findOrFail($request->input("user")));
-    */
-        if($page === 'index') {
+    public function likeDislike(Event $event)
+    {
+
+        $event->users()->toggle(Auth::user()); //funciona
+
+        //dd(url()->previous());
+
+        if (str_ends_with('events', '')) {
             return redirect()->route('events.index');
-        } else {
+        }
+        else{
             return redirect()->route('events.show', $event);
         }
+        // if($page === 'index') {
+        //     return redirect()->route('events.index');
+        // } else {
+        //     return redirect()->route('events.show', $event);
+        // }
     }
 }
