@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name',30);
             $table->string('twitter');
             $table->string('instagram');
@@ -23,6 +22,7 @@ return new class extends Migration
 
             $table->string('position');
             $table->string('rating');
+            $table->timestamps();
         });
     }
 

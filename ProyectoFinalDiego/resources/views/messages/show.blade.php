@@ -1,3 +1,18 @@
-<div>
-    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
-</div>
+@extends('layout.layout')
+
+@section('title')
+    Mensajes
+@endsection
+
+@section('body')
+    Aquí mostrará un Mensaje en específico
+    <br>
+    {{ $message->name }}
+    <br>
+    {{ $message->subject }}
+    <br>
+    {{ $message->text }}
+    <br>
+    {{ $message->readed }}
+
+@endsection

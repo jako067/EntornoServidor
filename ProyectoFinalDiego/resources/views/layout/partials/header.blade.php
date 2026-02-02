@@ -5,7 +5,6 @@
         <a href="{{route('logout')}}"> Salir </a>
         <a href="{{route('users.account')}}"> Cuenta </a>
 
-
     @endif
     <nav>
         <a href="{{route('index')}}"> Índice </a>

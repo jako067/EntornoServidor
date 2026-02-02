@@ -27,8 +27,6 @@ Route::get('events/delete',  [EventController::class,'delete'])->name('events.de
 Route::get('legal/privacity',  [LegalController::class,'privacity'])->name('legal.privacity');
 Route::get('legal/usage',  [LegalController::class,'usage'])->name('legal.usage');
 
-Route::get('contact', ContactController::class)->name('contact');
-
 
 Route::get('signup',[LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup',[LoginController::class, 'signup'])->name('signup');

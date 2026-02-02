@@ -12,7 +12,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-         $messages = Message::get();
+        $messages = Message::get();
         return view("messages.index",compact('messages'));
     }
 
@@ -34,7 +34,7 @@ class MessageController extends Controller
         $message['name']=$request->input('name');
         $message['subject']=$request->input('subject');
         $message['text']=$request->input('text');
-        $message['readed']=$request->input('readed');
+        $message['readed']=$request->input('readed')?1:0;
         $message->save();
 
         return (redirect()->route('messages.show', $message));
@@ -46,7 +46,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('messages.show',compact('player'));
+        return view('messages.show',compact('message'));
 
     }
 
@@ -55,7 +55,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('messages.edit',compact('message'));
     }
 
     /**
@@ -63,7 +63,13 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        //
+        $message['name']=$request->input('name');
+        $message['subject']=$request->input('subject');
+        $message['text']=$request->input('text');
+        $message['readed']=$request->input('readed')?1:0;
+        $message->save();
+
+         return (redirect()->route('messages.show', $message));
     }
 
     /**
@@ -71,6 +77,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('messages.index');
     }
 }

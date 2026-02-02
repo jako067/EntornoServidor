@@ -16,13 +16,11 @@ class UserController extends Controller
 
     public function list()
     {
-
         $users = User::get();
 
         //if (Auth::user()->rol!= 'admin') {
           //  return redirect()->route('index');
         //}
-        
         return view('users.list', compact('users'));
     }
 }

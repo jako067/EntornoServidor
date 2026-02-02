@@ -8,25 +8,34 @@ Contact
 @section('body')
 
 Aquí apareceran los mensajes
- @if ($errors->any())
-        Hay errores en el formulario: <br>
-        @foreach ( $errors->all() as $error )
-            {{$error}} <br>
-        @endforeach
-    @endif
 
-    <form method="post" action="{{route('messages.store',$message)}}">
-        @csrf
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
-        <label for="nationality">Nacionalidad</label>
-        <input type="text" name="nationality" id="nationality">
-        <label for="born">Fecha de nacimiento</label>
-        <input type="text" name="born" id="born">
+<div class="messages">
+        @forelse ($messages as $message)
+            <div class="messageCard">
+                @if (true)
+                    <a href="{{ route('messages.show', compact('message')) }}"> {{ $message->name }}</a>
 
-        <input type="submit" name="submit" id="submit">
+                    <br>
+                    <div style="display: inline">
+                        <form action="{{ route('messages.destroy', $message) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="eliminar">
+                        </form>
+                        <a href="{{ route('messages.edit', $message) }}">
+                            Editar
+                        </a>
+                    </div>
+                @endif
+            </div>
+            <br>
+        @empty
 
+            No hay mensajes
+        @endforelse
 
-    </form>
+<br>
+<a href="{{route('messages.create')}}"> Crear nuevo Mensaje </a>
+
 
 @endsection

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use DeepCopy\Filter\ReplaceFilter;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class EventController extends Controller
 {
@@ -13,6 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
+        $users =User::get();
         $events =Event::orderBy('date')->get();
         return(view('events.index', compact('events')));
     }
@@ -96,7 +100,9 @@ class EventController extends Controller
     }
 
     public function likeDislike(Request $request, Event $event, String $page){
-        
+    /*$users= Auth::user();
+        $event->user()->toogle(User::findOrFail($request->input("user")));
+    */
         if($page === 'index') {
             return redirect()->route('events.index');
         } else {

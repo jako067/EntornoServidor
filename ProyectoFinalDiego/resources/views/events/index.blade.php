@@ -29,14 +29,10 @@
                 Editar
             </a>
             <br>
+            
             <a href="{{ route('events.likeDislike', [$event, 'index']) }}">
                 Like/Dislike
             </a>
-                    @if ($heart)
-                        {
-                    {{ $heart }}
-                    }
-
             <br>
             <br>
         @endif

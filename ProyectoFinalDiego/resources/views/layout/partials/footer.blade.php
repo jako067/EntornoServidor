@@ -8,7 +8,6 @@ Desarrollado por Diego
 <br>
 <a href="{{route('legal.usage')}}"> Términos y condiciones de uso </a>
 <br>
-<a href="{{route('contact')}}"> Contacto </a>
 
 </footer>
 

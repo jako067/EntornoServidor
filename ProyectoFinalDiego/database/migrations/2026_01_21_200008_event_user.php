@@ -15,7 +15,6 @@ return new class extends Migration
             $table->foreignId('event_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->unique(['event_id','user_id'],'foreign_keys');
-            $table->boolean('like');
         });
     }
 
