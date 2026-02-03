@@ -17,7 +17,7 @@ Route::get('shop', ShopController::class)->name('shop');
 
 Route::resource('players',  PlayerController::class);
 
-Route::get('events/likedisllike/{event}/{page}',  [EventController::class,'likeDislike'])->name('events.likeDislike');
+Route::get('events/likedisllike/{event}',  [EventController::class,'likeDislike'])->name('events.likeDislike');
 Route::resource('events',  EventController::class);
 Route::resource('messages',  MessageController::class);
 
