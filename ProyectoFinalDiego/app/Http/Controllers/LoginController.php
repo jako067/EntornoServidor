@@ -20,14 +20,16 @@ class LoginController extends Controller
     public function signup(SignupRequest $request): RedirectResponse
     {
     $user = new User();
-    $user->username = $request->get('username');
-    $user->name =$request->get('name');
-    $user->email=$request->get('email');
+    $generatedName = $request->file('photo')->store('user/photos','public');
+
+    $user->username = $request->input('username');
+    $user->name =$request->input('name');
+    $user->email=$request->input('email');
     $user->password = Hash::make($request->get('password'));
 
-    $user->rol=$request->get('rol');
-    $user->date=$request->get('date');
-    $user->photo=$request->get('photo');
+    $user->rol=$request->input('rol');
+    $user->date=$request->input('date');
+    $user->photo=$generatedName;
 
     $user->save();
 
@@ -35,7 +37,6 @@ class LoginController extends Controller
     return redirect()->route('users.account');
 
     }
-
 
     public function loginForm()
     {
@@ -49,9 +50,7 @@ class LoginController extends Controller
         else{
             return view('auth.login');
         }
-
     }
-
     public function login(Request $request)
     {
         $credentials =$request->only('username', 'password');

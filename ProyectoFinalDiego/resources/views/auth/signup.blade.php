@@ -6,7 +6,7 @@
 
     <h1>Registrate</h1>
 
-    <form action="{{ route('signup') }}" method ="post">
+    <form action="{{ route('signup') }}" method ="post" enctype="multipart/form-data">
         @csrf
 
         <label for="username"> Nombre de usuario: </label> <br>
@@ -28,28 +28,27 @@
         @enderror <br>
 
         <label for="password"> Contraseña: </label> <br>
-        <input type="text" name="password" id="password" value="{{ old('password') }}"><br>
+        <input type="password" name="password" id="password" value="{{ old('password') }}"><br>
         @error('password')
             <br> Error: {{ $message }}
         @enderror <br>
 
         <label for="password_confirmation"> Repite la contraseña: </label> <br>
-        <input type="text" name="password_confirmation" id="password_confirmation"
+        <input type="password" name="password_confirmation" id="password_confirmation"
             value="{{ old('password_confirmation') }}"><br>
         @error('password_confirmation')
             <br> Error: {{ $message }}
         @enderror <br>
 
-        <label for="date"> Introduzca la contraseña </label> <br>
+        <label for="date"> Introduzca fecha de nacimiento </label> <br>
         <input type="date" name="date" id="date" value="{{ old('date') }}"><br>
 
         <label for="photo"> Introduzca su foto </label> <br>
-        <input type="text" name="photo" id="photo" value="{{ old('photo') }}"><br>
+        <input type="file" name="photo" id="photo" value="{{ old('photo') }}"><br>
 
         <select name="rol">
-            <option value="member">Oficial</option>
-            <option value="admin"> Exibición</option>
-            <option value="shop">Caridad</option>
+            <option value="member">Member</option>
+            <option value="shop">Tienda</option>
         </select>
 
         <input type="submit" value="Enviar">
