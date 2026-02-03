@@ -29,11 +29,18 @@
                 Editar
             </a>
             <br>
-            
-            <a href="{{ route('events.likeDislike', [$event, 'index']) }}">
+
+            <a href="{{ route('events.likeDislike', $event) }}">
                 Like/Dislike
             </a>
             <br>
+            @if ($event->users->contains(Auth::user()))
+
+                Si le dio like
+
+            @else
+                No le dió like
+            @endif
             <br>
         @endif
     @empty
