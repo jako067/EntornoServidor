@@ -1,15 +1,13 @@
 @extends('layout.layout')
 
 @section('title')
-
-Contact
+    Contact
 @endsection
 
 @section('body')
+    Aquí apareceran los mensajes
 
-Aquí apareceran los mensajes
-
-<div class="messages">
+    <div class="messages">
         @forelse ($messages as $message)
             <div class="messageCard">
                 @if (true)
@@ -33,9 +31,4 @@ Aquí apareceran los mensajes
 
             No hay mensajes
         @endforelse
-
-<br>
-<a href="{{route('messages.create')}}"> Crear nuevo Mensaje </a>
-
-
-@endsection
+    @endsection

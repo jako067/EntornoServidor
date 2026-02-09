@@ -29,9 +29,7 @@
                 Editar
             </a>
             <br>
-
-<<<<<<< HEAD
-            <a href="{{ route('events.likeDislike', [$event, 'index']) }}">
+            <a href="{{ route('events.likeDislike', $event) }}">
                 @if ($event->users->contains(Auth::user()))
 
                 <img src="/imgs-decoratives/corazónrojo.png" alt="Corasón/like/dislike">
@@ -41,21 +39,7 @@
                 <img src="/imgs-decoratives/corazónblanco.png" alt="Corasón/like/dislike">
 
                 @endif
-
-
-=======
-            <a href="{{ route('events.likeDislike', $event) }}">
-                Like/Dislike
->>>>>>> 8c439980fc858ec53d5ce0112a22ef4b0279ac4d
             </a>
-            <br>
-            @if ($event->users->contains(Auth::user()))
-
-                Si le dio like
-
-            @else
-                No le dió like
-            @endif
             <br>
         @endif
     @empty

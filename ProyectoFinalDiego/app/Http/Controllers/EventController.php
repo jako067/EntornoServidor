@@ -101,15 +101,10 @@ class EventController extends Controller
 
         $event->users()->toggle(Auth::user()); //funciona
 
-        //dd(url()->previous());
-        $previous = url()->previous();
+        return redirect()->back();
 
-        if (str_ends_with($previous,'/events')) {
-            return redirect()->route('events.index');
-        }
-        else{
-            return redirect()->route('events.show', $event);
-        }
+        //dd(url()->previous());
+
         // if($page === 'index') {
         //     return redirect()->route('events.index');
         // } else {

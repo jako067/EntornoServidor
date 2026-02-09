@@ -67,6 +67,9 @@ class MessageController extends Controller
         $message['subject']=$request->input('subject');
         $message['text']=$request->input('text');
         $message['readed']=$request->input('readed')?1:0;
+
+
+
         $message->save();
 
          return (redirect()->route('messages.show', $message));
