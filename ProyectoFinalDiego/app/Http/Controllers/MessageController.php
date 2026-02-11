@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageRequest;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use PharIo\Manifest\Author;
@@ -33,7 +34,7 @@ class MessageController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(Request $request)
+    public function store(MessageRequest $request)
     {
         $message = new Message();
         $message['name'] = $request->input('name');
@@ -54,8 +55,8 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         if ($message->user_id !== Auth::id() && !$message->readed) {
-                $message->readed = 1;
-                $message->save();
+            $message->readed = 1;
+            $message->save();
         }
 
         return view('messages.show', compact('message'));
@@ -72,7 +73,7 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Message $message)
+    public function update(MessageRequest $request, Message $message)
     {
         $message['name'] = $request->input('name');
         $message['subject'] = $request->input('subject');

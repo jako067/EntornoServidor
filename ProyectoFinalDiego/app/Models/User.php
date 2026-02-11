@@ -59,4 +59,9 @@ class User extends Authenticatable
 
     return $this->hasMany(Message::class);
     }
+
+    public function isAdmin(): bool{
+
+    return $this->rol ==='admin';
+    }
 }

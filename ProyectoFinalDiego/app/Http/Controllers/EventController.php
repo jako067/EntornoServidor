@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventsRequest;
 use App\Models\Event;
 use DeepCopy\Filter\ReplaceFilter;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EventsRequest $request)
     {
         $event = new Event;
 
@@ -70,7 +71,7 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(EventsRequest $request, Event $event)
     {
         $event['name'] = $request->input('name');
         $event['description'] = $request->input('description');

@@ -13,21 +13,39 @@
         <label for="name">Nombre de su evento: </label>
         <input type="text" name="name" id="name">
         <br>
+        @error('name')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="descripton">Descripción </label>
         <input type="text" name="description" id="description">
         <br>
+        @error('description')
+            <br> Error:{{ $message }}
+        @enderror
         <label for="location">Ubicación: </label>
         <input type="text" name="location" id="location">
         <br>
+        @error('location')
+            <br> Error:{{ $message }}
+        @enderror
         <label for="map">Mapa: </label>
         <input type="text" name="map" id="map">
         <br>
+        @error('map')
+            <br> Error:{{ $message }}
+        @enderror
         <label for="date">Fecha: </label>
         <input type="date" name="date" id="date">
         <br>
+        @error('date')
+            <br> Error:{{ $message }}
+        @enderror
         <label for="hour">Hora: </label>
         <input type="time" name="hour" id="hour">
         <br>
+        @error('time')
+            <br> Error:{{ $message }}
+        @enderror
         <select name="type">
             <option value="official">Oficial</option>
             <option value="exhibition"> Exibición</option>
@@ -37,6 +55,9 @@
         <label for="tag">Etiqueta: </label>
         <input type="text" name="tag" id="tag">
         <br>
+        @error('tag')
+            <br> Error:{{ $message }}
+        @enderror
         <label for="visible">Visible: </label>
         <input type="checkbox" name="visible" id="visible">
         <br>

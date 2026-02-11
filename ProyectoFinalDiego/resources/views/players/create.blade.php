@@ -13,27 +13,51 @@
         <label for="name">Nombre de su jugador: </label>
         <input type="text" name="name" id="name">
         <br>
-        <label for="tiwtter">Twitter: </label>
+        @error('name')
+            <br> Error: {{ $message }}
+        @enderror <br>
+        <label for="twitter">Twitter: </label>
         <input type="text" name="twitter" id="twitter">
         <br>
+        @error('twitter')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="instagram">Instagram: </label>
         <input type="text" name="instagram" id="instagram">
         <br>
+        @error('instagram')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="twitch">Twitch: </label>
         <input type="text" name="twitch" id="twitch">
         <br>
+        @error('twitch')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="photo">photo: </label>
         <input type="file" name="photo" id="photo">
         <br>
+        @error('photo')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="visible">Visible: </label>
         <input type="checkbox" name="visible" id="visible">
         <br>
+        @error('visible')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="position">Posición: </label>
         <input type="text" name="position" id="position">
         <br>
+        @error('position')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <label for="rating">Puntuación: </label>
         <input type="text" name="rating" id="rating">
         <br>
+        @error('rating')
+            <br> Error: {{ $message }}
+        @enderror <br>
         <input type="submit" value="enviar">
     </form>
 @endsection

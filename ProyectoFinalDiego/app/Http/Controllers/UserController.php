@@ -10,7 +10,6 @@ class UserController extends Controller
 {
     public function account()
     {
-
         return view('users.account');
     }
 
@@ -23,6 +22,5 @@ class UserController extends Controller
         //}
         return view('users.list', compact('users'));
     }
-
 
 }
