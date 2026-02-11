@@ -34,7 +34,7 @@
         @enderror <br>
 
         <label for="password_confirmation"> Repite la contraseña: </label> <br>
-        <input type="passwordx" name="password_confirmation" id="password_confirmation"
+        <input type="password" name="password_confirmation" id="password_confirmation"
             value="{{ old('password_confirmation') }}"><br>
         @error('password_confirmation')
             <br> Error: {{ $message }}

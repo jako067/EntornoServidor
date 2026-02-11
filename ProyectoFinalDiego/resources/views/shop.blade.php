@@ -3,5 +3,6 @@
 @section('title', 'tienda')
 @section('body')
 
-    Esta es la tienda
+    WIP
+    
 @endsection

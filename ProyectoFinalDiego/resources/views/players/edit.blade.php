@@ -3,49 +3,64 @@
 @section('title')
     Editar
 @endsection
+
 @section('body')
-    <form action="{{ route('players.update', $player) }}" method="post" enctype="multipart/form-data">
-        @csrf
-        @method('put')
 
-        <label for="name">Nombre de su jugador: </label>
-        <input type="text" name="name" id="name" value="{{ old('name') ?? $player->name }}">
-        @error('name')
-            <br> Error: {{ $message }}
-        @enderror <br>
+<style>
+    form { max-width:500px; margin:auto; }
+    input { width:100%; padding:6px; margin:4px 0 10px; }
+    img { max-width:100%; margin:10px 0; }
+    .error { color:red; font-size:0.9em; }
+</style>
 
-        <label for="twitter">Twitter: </label>
-        <input type="text" name="twitter" id="twitter" value="{{ old('twitter') ?? $player->twitter }}">
-        @error('twitter')
-            <br> Error: {{ $message }}
-        @enderror <br>
-        <label for="instagram">Instagram: </label>
-        <input type="text" name="instagram" id="instagram" value="{{ old('instagram') ?? $player->instagram }}">
-        @error('instagram')
-            <br> Error: {{ $message }}
-        @enderror <br>
-        <label for="twitch">Twitch: </label>
-        <input type="text" name="twitch" id="twitch" value="{{ old('twitch') ?? $player->twitch }}">
-        @error('twitch')
-            <br> Error: {{ $message }}
-        @enderror <br>
-        <label for="photo">photo: </label>
-        <input type="file" name="photo" id="photo" value="{{ old('photo') ?? $player->photo }}">
-        <img src="/storage/{{ old('photo') ?? $player->photo }} "alt="Foto de {{ old('name') ?? $player->name }} width=400px">
+<form action="{{ route('players.update', $player) }}" method="post" enctype="multipart/form-data">
+    @csrf
+    @method('put')
 
-        <label for="visible">Visible: </label>
-        <input type="checkbox" name="visible" id="visible">
+    <label>Nombre de su jugador:</label>
+    <input type="text" name="name" value="{{ old('name') ?? $player->name }}">
+    @error('name')
+        <div class="error">{{ $message }}</div>
+    @enderror
 
-        <label for="position">Posición: </label>
-        <input type="text" name="position" id="position" value="{{ old('photo') ?? $player->position }}">
-        @error('position')
-            <br> Error: {{ $message }}
-        @enderror <br>
-        <label for="rating">Puntuación: </label>
-        <input type="text" name="rating" id="rating" value="{{ old('photo') ?? $player->rating }}">
-        @error('rating')
-            <br> Error: {{ $message }}
-        @enderror <br>
-        <input type="submit" value="enviar">
-    </form>
+    <label>Twitter:</label>
+    <input type="text" name="twitter" value="{{ old('twitter') ?? $player->twitter }}">
+    @error('twitter')
+        <div class="error">{{ $message }}</div>
+    @enderror
+
+    <label>Instagram:</label>
+    <input type="text" name="instagram" value="{{ old('instagram') ?? $player->instagram }}">
+    @error('instagram')
+        <div class="error">{{ $message }}</div>
+    @enderror
+
+    <label>Twitch:</label>
+    <input type="text" name="twitch" value="{{ old('twitch') ?? $player->twitch }}">
+    @error('twitch')
+        <div class="error">{{ $message }}</div>
+    @enderror
+
+    <label>Foto:</label>
+    <input type="file" name="photo">
+    <img src="/storage/{{ old('photo') ?? $player->photo }}" alt="Foto">
+
+    <label>Visible:</label>
+    <input type="checkbox" name="visible">
+
+    <label>Posición:</label>
+    <input type="text" name="position" value="{{ old('position') ?? $player->position }}">
+    @error('position')
+        <div class="error">{{ $message }}</div>
+    @enderror
+
+    <label>Puntuación:</label>
+    <input type="text" name="rating" value="{{ old('rating') ?? $player->rating }}">
+    @error('rating')
+        <div class="error">{{ $message }}</div>
+    @enderror
+
+    <input type="submit" value="Enviar">
+</form>
+
 @endsection

@@ -7,6 +7,8 @@
 @section('body')
     <h1> Añada su mensaje: </h1>
 
+    Escriba su mensaje: {{Auth::user()->name}}
+
     <form action="{{ route('messages.store') }}" method="post">
         @csrf
 

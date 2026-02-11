@@ -72,5 +72,10 @@ class LoginController extends Controller
 
         return redirect()->route('index');
     }
+    public function destroy(){
+
+        Auth::user()->delete();
+        return redirect()->route('index');
+    }
 
 }

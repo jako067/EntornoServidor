@@ -5,16 +5,16 @@
 @endsection
 
 @section('body')
-    Aquí apareceran los mensajes
 
-    <div class="messages">
+    <h2 style="text-align:center;"> Mensajes</h2>
+
         @forelse ($messages as $message)
-            <div class="messageCard">
+            <div style="padding:50px ; background-color:rgb(136, 180, 162);" >
                 @if (true)
                     <a href="{{ route('messages.show', compact('message')) }}"> {{ $message->name }}</a>
 
                     <br>
-                    <div style="display: inline">
+                    <div style="display: inline;    ">
                         <form action="{{ route('messages.destroy', $message) }}" method="post">
                             @csrf
                             @method('delete')

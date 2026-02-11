@@ -19,8 +19,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('players/create', [PlayerController::class, 'create'])
         ->middleware('isadmin')
         ->name('players.create');
-    Route::resource('players', PlayerController::class)->except(['create']);
-
+    Route::get('players/{player}', [PlayerController::class, 'show'])
+    ->middleware('auth')
+    ->name('players.show');
+    Route::resource('players', PlayerController::class)->except(['create','show']);
 
     Route::get('events/create',  [EventController::class, 'create'])
         ->middleware('isadmin')
@@ -45,6 +47,8 @@ use Illuminate\Support\Facades\Route;
     Route::post('signup',[LoginController::class, 'signup'])->name('signup');
     Route::get('login',[LoginController::class, 'loginForm'])->name('loginForm');
     Route::post('login',[LoginController::class, 'login'])->name('login');
+
+    Route::delete('login/destroy',[LoginController::class, 'destroy'])->name('user.destroy');
 
     Route::get('logout',[LoginController::class, 'logout'])->name('logout')->middleware('auth');
 

@@ -36,13 +36,13 @@
             <br> Error: {{ $message }}
         @enderror <br>
         <label for="date">Fecha: </label>
-        <input type="text" name="date" id="date" value="{{ old('date') ?? $event->date }}">
+        <input type="date" name="date" id="date" value="{{ old('date') ?? $event->date }}">
         <br>
         @error('date')
             <br> Error: {{ $message }}
         @enderror <br>
         <label for="hour">Hora: </label>
-        <input type="text" name="hour" id="hour" value="{{ old('hour') ?? $event->hour }}">
+        <input type="time" name="hour" id="hour" value="{{ old('hour') ?? $event->hour }}">
         <br>
         @error('hour')
             <br> Error: {{ $message }}

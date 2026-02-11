@@ -26,6 +26,11 @@ class MessageController extends Controller
      */
     public function create()
     {
+
+    if(!Auth::user()){
+
+        return view('auth.login');
+    }
         $messages = Message::get();
         return (view('messages.create', compact("messages")));
     }

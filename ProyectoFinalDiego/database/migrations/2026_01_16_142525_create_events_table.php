@@ -16,14 +16,13 @@ return new class extends Migration
             $table->string('name',30);
             $table->string('description');
             $table->string('location');
-            $table->string('map')->nullable();
+            $table->string('map', 2000)->nullable();
             $table->date('date')->nullable();
             $table->time('hour');
             $table->enum('type',['official','exhibition','charity'])->default('official');
             $table->string('tag');
             $table->boolean('visible')->default(false);
             $table->timestamps();
-
 
         });
     }

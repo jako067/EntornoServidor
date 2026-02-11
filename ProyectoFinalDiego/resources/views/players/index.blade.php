@@ -11,26 +11,27 @@
     <br>
     <div class="players">
         @forelse ($players as $player)
-            <div class="playerCard">
-                @if ($player->visible)
+            @if ($player->visible || (Auth::check() && Auth::user()->isAdmin()))
+                <div class="playerCard">
                     <a href="{{ route('players.show', compact('player')) }}"> {{ $player->name }}</a>
 
                     <img src="/storage/{{ $player->photo }}"alt="Foto de {{ $player->name }} " width="400">
                     <br>
-                    <div style="display: inline">
-                        <form action="{{ route('players.destroy', $player) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value="eliminar">
-                        </form>
-                        <a href="{{ route('players.edit', $player) }}">
-                            Editar
-                        </a>
-                    </div>
-                @endif
-            </div>
-        @empty
-
-            No hay jugadores
-        @endforelse
-    @endsection
+                    @isadmin
+                        <div style="display: inline">
+                            <form action="{{ route('players.destroy', $player) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <input type="submit" value="eliminar">
+                            </form>
+                            <a href="{{ route('players.edit', $player) }}">
+                                Editar
+                            </a>
+                        </div>
+                    @endisadmin
+            @endif
+    </div>
+@empty
+    No hay jugadores
+    @endforelse
+@endsection

@@ -13,7 +13,8 @@
     <br>
     {{ $event->location }}
     <br>
-    {{ $event->map }}
+
+    <iframe src="{{ $event->map }}" width="400" height="300"> </iframe>
     <br>
     {{ $event->date }}
     <br>
@@ -33,24 +34,26 @@
         @endif
     </a>
 
-    @isadmin()
-        <h3>Players</h3>
-        @forelse ($players as $player)
-            <form action="{{ route('events.player', $event) }}" method="POST">
-                @csrf
 
+    <h3>Players</h3>
+    @forelse ($players as $player)
+        <form action="{{ route('events.player', $event) }}" method="POST">
+            @csrf
+            @isadmin()
                 <button type="submit" name='player_id' value="{{ $player->id }}">
-                    {{ $player->name }}
-                    @if ($event->players->contains($player))
-                        Está dentro del evento
-                    @else
-                        No está dentro del evento
-                    @endif
-                </button>
-            </form>
-            <br>
-        @empty
-            <p>No hay jugadores disponibles</p>
-        @endforelse
-    @endisadmin
+            @endisadmin
+                {{ $player->name }}
+
+                @if ($event->players->contains($player))
+                    Está dentro del evento
+                @else
+                    No está dentro del evento
+                @endif
+            </button>
+        </form>
+        <br>
+    @empty
+        <p>No hay jugadores disponibles</p>
+    @endforelse
+
 @endsection
