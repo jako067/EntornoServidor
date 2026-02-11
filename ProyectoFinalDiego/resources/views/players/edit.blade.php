@@ -31,12 +31,7 @@
         @enderror <br>
         <label for="photo">photo: </label>
         <input type="file" name="photo" id="photo" value="{{ old('photo') ?? $player->photo }}">
-        @error('photo')
-            <br> Error: {{ $message }}
-        @enderror <br>
-
-        <img
-            src="/storage/{{ old('photo') ?? $player->photo }} "alt="Foto de {{ old('name') ?? $player->name }} width=400px">
+        <img src="/storage/{{ old('photo') ?? $player->photo }} "alt="Foto de {{ old('name') ?? $player->name }} width=400px">
 
         <label for="visible">Visible: </label>
         <input type="checkbox" name="visible" id="visible">

@@ -32,7 +32,6 @@ class EventsRequest extends FormRequest
             'hour' => ['required', 'date_format:H:i'],
             'type' => ['required', 'in:official,exhibition,charity'],
             'tags' => ['nullable', 'string'],
-            'visible' => ['boolean'],
         ];
     }
 
@@ -59,7 +58,6 @@ class EventsRequest extends FormRequest
 
             'tags.string' => 'Las etiquetas deben ser texto.',
 
-            'visible.boolean' => 'El campo visible debe ser verdadero o falso.',
         ];
     }
 }

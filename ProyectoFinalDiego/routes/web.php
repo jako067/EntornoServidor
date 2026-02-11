@@ -28,12 +28,12 @@ use Illuminate\Support\Facades\Route;
     Route::resource('events',  EventController::class)->except(['create']);
     Route::get('events/delete',  [EventController::class,'delete'])->name('events.delete');
 
-
-
     Route::get('messages/index',  [MessageController::class, 'index'])
         ->middleware('isadmin')
         ->name('messages.index');
     Route::resource('messages',  MessageController::class)->except(['index']);
+
+    Route::post('/events/{event}/player', [EventController::class, 'eventsPlayers'])->name('events.player')->middleware('isadmin');
 
     Route::get('events/likedisllike/{event}',  [EventController::class,'likeDislike'])->name('events.likeDislike');
 

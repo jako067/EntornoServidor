@@ -11,6 +11,9 @@ class Event extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function players(): BelongsToMany
+    {
+        return $this->belongsToMany(Player::class);
+    }
 }
-
-

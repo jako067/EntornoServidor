@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EventsRequest;
 use App\Models\Event;
+use App\Models\Player;
 use DeepCopy\Filter\ReplaceFilter;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use PharIo\Manifest\Author;
 
 class EventController extends Controller
 {
@@ -17,6 +19,7 @@ class EventController extends Controller
     public function index()
     {
         $users = User::get();
+
         $events = Event::orderBy('date')->get();
         return (view('events.index', compact('events')));
     }
@@ -57,7 +60,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.show', compact('event'));
+        $players = Player::get();
+        return view('events.show', compact('event'), compact('players'));
     }
 
     /**
@@ -111,5 +115,13 @@ class EventController extends Controller
         // } else {
         //     return redirect()->route('events.show', $event);
         // }
+    }
+
+    public function eventsPlayers(Request $request, Event $event)
+    {
+        $player = Player::findOrFail($request->input('player_id'));
+        $event->players()->toggle($player);
+
+        return redirect()->back();
     }
 }

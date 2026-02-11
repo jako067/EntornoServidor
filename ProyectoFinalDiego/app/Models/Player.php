@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Player extends Model
 {
-    public function players(){
-
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
     }
 }

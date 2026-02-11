@@ -37,15 +37,10 @@
         <label for="photo">photo: </label>
         <input type="file" name="photo" id="photo">
         <br>
-        @error('photo')
-            <br> Error: {{ $message }}
-        @enderror <br>
         <label for="visible">Visible: </label>
         <input type="checkbox" name="visible" id="visible">
         <br>
-        @error('visible')
-            <br> Error: {{ $message }}
-        @enderror <br>
+
         <label for="position">Posición: </label>
         <input type="text" name="position" id="position">
         <br>

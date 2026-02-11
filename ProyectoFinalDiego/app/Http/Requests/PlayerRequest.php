@@ -27,10 +27,6 @@ class PlayerRequest extends FormRequest
             'twitter'   => ['nullable', 'string'],
             'instagram' => ['nullable', 'string'],
             'twitch'    => ['nullable', 'string'],
-            'visible'   => ['boolean'],
-
-
-            'photo'     => ['required', 'image'],
             'position'  => ['required', 'string'],
             'rating'    => ['required', 'integer'],
         ];
@@ -41,8 +37,6 @@ class PlayerRequest extends FormRequest
         return [
             'name.required'    => 'El nombre es obligatorio.',
             'name.max'         => 'El nombre no puede tener más de 30 caracteres.',
-            'photo.required'   => 'Debes subir una foto.',
-            'photo.image'      => 'El archivo debe ser una imagen.',
             'position.required' => 'La posición es obligatoria.',
             'rating.required'  => 'El rating es obligatorio.',
             'rating.integer'   => 'El rating debe ser un número entero.',
