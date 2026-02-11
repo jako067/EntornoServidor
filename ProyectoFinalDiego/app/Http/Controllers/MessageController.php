@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use PharIo\Manifest\Author;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -12,8 +15,9 @@ class MessageController extends Controller
      */
     public function index()
     {
+        $users = User::get();
         $messages = Message::get();
-        return view("messages.index",compact('messages'));
+        return view("messages.index", compact('messages'));
     }
 
     /**
@@ -21,24 +25,27 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $messages=Message::get();
-        return(view('messages.create',compact("messages")));
+        $messages = Message::get();
+        return (view('messages.create', compact("messages")));
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
-        $message=new Message();
-        $message['name']=$request->input('name');
-        $message['subject']=$request->input('subject');
-        $message['text']=$request->input('text');
-        $message['readed']=$request->input('readed')?1:0;
+        $message = new Message();
+        $message['name'] = $request->input('name');
+        $message['subject'] = $request->input('subject');
+        $message['text'] = $request->input('text');
+        $message['readed'] = $request->input('readed') ? 1 : 0;
+
+        $message->user()->associate(Auth::user());
+
         $message->save();
 
         return (redirect()->route('messages.show', $message));
-
     }
 
     /**
@@ -46,8 +53,12 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('messages.show',compact('message'));
+        if ($message->user_id !== Auth::id() && !$message->readed) {
+                $message->readed = 1;
+                $message->save();
+        }
 
+        return view('messages.show', compact('message'));
     }
 
     /**
@@ -55,7 +66,7 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        return view('messages.edit',compact('message'));
+        return view('messages.edit', compact('message'));
     }
 
     /**
@@ -63,16 +74,16 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        $message['name']=$request->input('name');
-        $message['subject']=$request->input('subject');
-        $message['text']=$request->input('text');
-        $message['readed']=$request->input('readed')?1:0;
+        $message['name'] = $request->input('name');
+        $message['subject'] = $request->input('subject');
+        $message['text'] = $request->input('text');
+        $message['readed'] = $request->input('readed') ? 1 : 0;
 
 
 
         $message->save();
 
-         return (redirect()->route('messages.show', $message));
+        return (redirect()->route('messages.show', $message));
     }
 
     /**

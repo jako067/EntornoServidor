@@ -19,9 +19,6 @@
         <label for="text">texto: </label>
         <input type="text" name="text" id="text">
 
-        <label for="readed">Leido: </label>
-        <input type="text" name="readed" id="readed">
-
         <input type="submit" value="enviar">
     </form>
 @endsection

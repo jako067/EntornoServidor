@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
-    public function User(): BelongsTo{
+    public function user(): BelongsTo{
 
-    return $this->belongsTo(Message::class);
+    return $this->belongsTo(User::class);
     }
 }

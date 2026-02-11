@@ -13,6 +13,5 @@
     <br>
     {{ $message->text }}
     <br>
-    {{ $message->readed }}
-
+    {{ $message->user->name}} <br>
 @endsection

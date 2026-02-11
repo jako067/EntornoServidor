@@ -20,9 +20,21 @@
                             @method('delete')
                             <input type="submit" value="eliminar">
                         </form>
+
+                        {{ $message->user->name }} <br>
+
                         <a href="{{ route('messages.edit', $message) }}">
                             Editar
                         </a>
+
+                        <br>
+
+                        @if ($message->readed)
+                            Este mensaje ha sido leído
+                        @else
+                            Este mensaje no ha sido leído
+                        @endif
+
                     </div>
                 @endif
             </div>

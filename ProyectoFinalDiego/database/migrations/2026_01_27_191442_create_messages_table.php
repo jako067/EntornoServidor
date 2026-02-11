@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('subject',100);
             $table->string('text');
             $table->boolean('readed')->default(false);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
 
             });
