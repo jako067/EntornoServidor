@@ -27,8 +27,8 @@ class SignupRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:2','max:255',],
             /*'email'=> ['required','string', 'min:10','max:255', 'unique:users'],*/
-            'email'=> 'email:rfc,dns',
-            'password'=>['required', 'confirmed',Password::default()],
+            //'email'=> 'email:rfc,dns',
+            //'password'=>['required', 'confirmed',Password::default()],
         ];
     }
     public function messages()

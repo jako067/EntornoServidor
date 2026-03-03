@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->enum('rol',['member','admin','shop'])->default('member');
-            $table->date('date');
-            $table->string('photo');
+            $table->date('date')->nullable();
+            $table->string('photo')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

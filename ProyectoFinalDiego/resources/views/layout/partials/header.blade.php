@@ -10,6 +10,7 @@
     @else
         <a href="{{ route('login') }}"> Loguearte</a>
         <a href="{{ route('signup') }}"> Signup</a>
+        <a href="{{ route('googlepage') }}"> Logueate con SSO google</a>
     @endif
     <nav>
 
