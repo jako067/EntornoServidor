@@ -2,18 +2,16 @@
 
     use App\Http\Controllers\LoginController;
     use App\Http\Controllers\UserController;
-    use Laravel\Socialite\Facades\Socialite;
-    use App\Http\Controllers\ContactController;
     use App\Http\Controllers\PlayerController;
     use App\Http\Controllers\EventController;
-    use App\Http\Controllers\IndexController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\IndexController;
     use App\Http\Controllers\LegalController;
     use App\Http\Controllers\MessageController;
     use App\Http\Controllers\ShopController;
     use App\Http\Controllers\WhereController;
-    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
-    use App\Models\User;
+
 
 
     Route::get('/', IndexController::class)->name('index');
@@ -61,10 +59,17 @@
 
     Route::get('where', WhereController::class)->name('where');
 
-    Route::get('/google-auth/redirect', function () {
+    /*Route::get('/google-auth/redirect', function () {
         return Socialite::driver('google')->redirect();
     })->name('googlepage');
+    */
 
+    Route::get('/google-auth/redirect', [GoogleController::class, 'redirect'])->name('googlepage');
+
+
+    Route::get('/google-auth/callback', [GoogleController::class, 'callback']);
+
+/*
     Route::get('/google-auth/callback', function () {
         $user_google = Socialite::driver('google')->stateless()->user();
         $user = User::where('email', $user_google->email)->first();
@@ -84,3 +89,4 @@
         Auth::login($user);
         return redirect()->route('users.account');
     });
+*/
